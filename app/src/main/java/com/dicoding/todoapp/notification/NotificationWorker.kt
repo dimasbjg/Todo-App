@@ -46,8 +46,9 @@ class NotificationWorker(ctx: Context, params: WorkerParameters) : Worker(ctx, p
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setContentIntent(getPendingIntent(data))
             .setDefaults(NotificationCompat.DEFAULT_ALL)
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(NOTIFICATION_CHANNEL_ID, channelName, NotificationManager.IMPORTANCE_DEFAULT)
+            val channel = NotificationChannel(NOTIFICATION_CHANNEL_ID, channelName.toString(), NotificationManager.IMPORTANCE_DEFAULT)
             notification.setChannelId(NOTIFICATION_CHANNEL_ID)
             notificationManager.createNotificationChannel(channel)
         }

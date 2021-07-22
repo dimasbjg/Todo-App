@@ -39,7 +39,7 @@ class SettingsActivity : AppCompatActivity() {
                 val channelName = getString(R.string.notify_channel_name)
                 //TODO 13 : Schedule and cancel daily reminder using WorkManager with data channelName
                 val workManager = WorkManager.getInstance()
-                if (newValue == true) {
+                if (newValue.toString() == "true") {
                     val dailyReminder = PeriodicWorkRequest.Builder(NotificationWorker::class.java,1,TimeUnit.DAYS)
                         .addTag(channelName)
                         .build()
